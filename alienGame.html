@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Alien Game</title>
+		<script type='text/javascript' src='js/game.js'></script>
+		<script type='text/javascript' src='js/objects.js'></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
+		<style type='text/css'>
+			#canvasArea {
+				position:relative;
+				width: 560px;
+				height: 346px;
+			}
+			
+			#myCanvas {
+			z-index: 2;
+			position: absolute;
+			}
+			
+			#bCanvas {
+			z-index: 0;
+			position: absolute;
+			/*background:url(assets/background1v2.png);*/
+			}
+			
+			.hTitle{
+				z-index: 3;
+				position: absolute;
+				margin-left: 10px;
+				margin-top: 5px;
+				color: red;
+			}
+
+			#health{
+				z-index: 3;
+				position: relative;
+				margin: 0;
+				width: 100px;
+				height: 20px;
+				background-color: red;
+				border-radius: 10%;
+			}
+			
+			.hOutline{
+				z-index: 3;
+				position: absolute;
+				margin-left: 9px;
+				margin-top: 24px;
+				width: 100px;
+				height: 20px;
+				border: 1px solid black;
+				border-radius: 10%;
+			}
+			
+			.sTitle
+			{
+				z-index: 3;
+				position: absolute;
+				margin-left: 450px;
+				margin-top: 5px;
+				color: #0AF;
+			}
+			
+			#score{
+				z-index: 3;
+				position: absolute;
+				margin-left: 450px;
+				margin-top: 20px;
+				color: #0AF;
+				font-size: 36px;
+			}
+			
+			.wrapper{
+				width: 560px;
+				height: 100%;
+				margin: auto;
+			}
+			
+			#textStuff{
+				margin-top: 10px;
+				position: relative;
+				width: 100%;
+				height: 100%;
+			}
+			
+			#goal{
+				position: relative;
+				margin-left: 15px;
+				float: left;
+				width: 270px;
+			}
+			
+			#instruct{
+				margin: 0;
+				position: relative;
+				width: 270px;
+				float: left;
+				border-right: 1px solid black;
+			}
+			
+			#instruct ul{
+				list-style-type: none;
+				padding: 0;
+				margin: 0;
+			}
+			
+			p{margin:0;}
+			
+			#preload { display: none; }
+		</style>
+	</head>
+	
+	<body onload='init()'>
+	<div class="wrapper">
+		<div id='canvasArea'>
+			<canvas id='bCanvas' width='560' height='346'>Browser no canvas</canvas>
+			<canvas id='myCanvas' width='560' height='346'>Browser does not support Canvas</canvas>
+			<p class='hTitle'>HEALTH</p>
+			<div class='hOutline'>
+						<div id='health'></div>
+			</div>
+			<p class='sTitle'>SCORE</p>			
+			<p id='score'>350</p>
+		</div>
+		<div id="textStuff">
+		<div id="instruct">
+			<ul>
+				<li><strong>Space Bar</strong>: Abduction ray</li>
+				<li><strong>Left Click</strong>: Shoot</li>
+				<li><strong>WASD/Arrow Keys</strong>: Movement</li>
+			</ul>
+		</div>
+		
+		<div id="goal">
+			<p><strong>Goal of The Game:</strong> Shoot the tanks/planes. Abduct baked goods, watch out for the hazardous materials!</p>
+		</div>
+		</div>
+	</div>
+	</body>
+	
+	<div id="preload">
+		<!-- load buildings -->
+		<img src="assets/buildings/bakery.png" width="1" height="1"/>
+		<img src="assets/buildings/buffet.png" width="1" height="1"/>
+		<img src="assets/buildings/candyshop.png" width="1" height="1"/>
+		<img src="assets/buildings/cigarcenter.png" width="1" height="1"/>
+		<img src="assets/buildings/javahut.png" width="1" height="1"/>
+		<img src="assets/buildings/pizza.png" width="1" height="1"/>
+		<img src="assets/buildings/toxicmill.png" width="1" height="1"/>
+		<!-- load clouds -->
+		<img src="assets/clouds/cloud01.png" width="1" height="1"/>
+		<img src="assets/clouds/cloud02.png" width="1" height="1"/>
+		<img src="assets/clouds/cloud03.png" width="1" height="1"/>
+		<!-- load trees -->
+		<img src="assets/trees/tree01.png" width="1" height="1"/>
+		<img src="assets/trees/tree02.png" width="1" height="1"/>
+
+		<img src="assets/roadPaint.png" width="1" height="1"/>
+		<img src="assets/background1v2.png" width="1" height="1"/>
+
+		<img src="assets/explosionCycle.png" width="1" height="1"/>
+
+	</div>
+
+</html>
