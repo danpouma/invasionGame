@@ -1,143 +1,55 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Alien Game</title>
-		<script type='text/javascript' src='js/game.js'></script>
-		<script type='text/javascript' src='js/objects.js'></script>
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
-		<style type='text/css'>
-			#canvasArea {
-				position:relative;
-				width: 560px;
-				height: 346px;
-			}
-			
-			#myCanvas {
-			z-index: 2;
-			position: absolute;
-			}
-			
-			#bCanvas {
-			z-index: 0;
-			position: absolute;
-			/*background:url(assets/background1v2.png);*/
-			}
-			
-			.hTitle{
-				z-index: 3;
-				position: absolute;
-				margin-left: 10px;
-				margin-top: 5px;
-				color: red;
-			}
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Alien Invasion!</title>
+		<meta name="description" content="AlienInvasion!">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-			#health{
-				z-index: 3;
-				position: relative;
-				margin: 0;
-				width: 100px;
-				height: 20px;
-				background-color: red;
-				border-radius: 10%;
-			}
-			
-			.hOutline{
-				z-index: 3;
-				position: absolute;
-				margin-left: 9px;
-				margin-top: 24px;
-				width: 100px;
-				height: 20px;
-				border: 1px solid black;
-				border-radius: 10%;
-			}
-			
-			.sTitle
-			{
-				z-index: 3;
-				position: absolute;
-				margin-left: 450px;
-				margin-top: 5px;
-				color: #0AF;
-			}
-			
-			#score{
-				z-index: 3;
-				position: absolute;
-				margin-left: 450px;
-				margin-top: 20px;
-				color: #0AF;
-				font-size: 36px;
-			}
-			
-			.wrapper{
-				width: 560px;
-				height: 100%;
-				margin: auto;
-			}
-			
-			#textStuff{
-				margin-top: 10px;
-				position: relative;
-				width: 100%;
-				height: 100%;
-			}
-			
-			#goal{
-				position: relative;
-				margin-left: 15px;
-				float: left;
-				width: 270px;
-			}
-			
-			#instruct{
-				margin: 0;
-				position: relative;
-				width: 270px;
-				float: left;
-				border-right: 1px solid black;
-			}
-			
-			#instruct ul{
-				list-style-type: none;
-				padding: 0;
-				margin: 0;
-			}
-			
-			p{margin:0;}
-			
-			#preload { display: none; }
-		</style>
+		<link href="css/alien.invasion.css" rel="stylesheet">
 	</head>
 	
 	<body onload='init()'>
-	<div class="wrapper">
-		<div id='canvasArea'>
-			<canvas id='bCanvas' width='560' height='346'>Browser no canvas</canvas>
-			<canvas id='myCanvas' width='560' height='346'>Browser does not support Canvas</canvas>
-			<p class='hTitle'>HEALTH</p>
-			<div class='hOutline'>
-						<div id='health'></div>
+		<div class="container">
+			
+			<div class="row" id="header">
+				<div class="col-sm-6">
+					<a class="header active" href="/">ALIEN INVASION!</a>
+					<a class="header" href="https://github.com/anothrNick">creator</a>
+					<a class="header" href="https://github.com/danpouma/invasionGame">source code</a>
+				</div>
 			</div>
-			<p class='sTitle'>SCORE</p>			
-			<p id='score'>350</p>
+
+			<div class="row" id='canvasArea'>
+				<canvas id='bCanvas' width='560' height='346'>Browser no canvas</canvas>
+				<canvas id='myCanvas' width='560' height='346'>Browser does not support Canvas</canvas>
+				<p class='hTitle'>HEALTH</p>
+				<div class='hOutline'>
+							<div id='health'></div>
+				</div>
+				<p class='sTitle'>SCORE</p>			
+				<p id='score'>350</p>
+			</div>
+			<div class="row" id="textStuff">
+				<div id="instruct">
+					<ul>
+						<li><strong>Space Bar</strong>: Abduction ray</li>
+						<li><strong>Left Click</strong>: Shoot</li>
+						<li><strong>WASD/Arrow Keys</strong>: Movement</li>
+					</ul>
+				</div>
+				
+				<div id="goal">
+					<p><strong>Goal of The Game:</strong> Shoot the tanks/planes. Abduct baked goods, watch out for the hazardous materials!</p>
+				</div>
+			</div>
 		</div>
-		<div id="textStuff">
-		<div id="instruct">
-			<ul>
-				<li><strong>Space Bar</strong>: Abduction ray</li>
-				<li><strong>Left Click</strong>: Shoot</li>
-				<li><strong>WASD/Arrow Keys</strong>: Movement</li>
-			</ul>
-		</div>
-		
-		<div id="goal">
-			<p><strong>Goal of The Game:</strong> Shoot the tanks/planes. Abduct baked goods, watch out for the hazardous materials!</p>
-		</div>
-		</div>
-	</div>
+
+		<script src="js/game.js"></script>
+		<script src="js/objects.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
 	</body>
-	
 	<div id="preload">
 		<!-- load buildings -->
 		<img src="assets/buildings/bakery.png" width="1" height="1"/>
@@ -159,7 +71,5 @@
 		<img src="assets/background1v2.png" width="1" height="1"/>
 
 		<img src="assets/explosionCycle.png" width="1" height="1"/>
-
 	</div>
-
 </html>
