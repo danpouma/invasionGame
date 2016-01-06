@@ -779,6 +779,7 @@ function enemy(imageSrc)
 		health -= 10;
 		if(health == 0)
 		{
+			playerScore += 100;
 			destruct = true;
 			selfDestruct();
 		}
