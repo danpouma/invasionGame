@@ -492,7 +492,7 @@ function Player(imageSrc)
 	{
 		return y;
 	}
-	
+
 	this.incY = function(NEW_Y)
 	{
 		y += NEW_Y;
@@ -544,7 +544,7 @@ function Player(imageSrc)
 		for(bi = 0; bi<ammo.length; bi++)
 		{
 			var bl = ammo[bi]
-			if(bl.getX() > tank.getX() &&
+			if (bl.getX() > tank.getX() &&
 				bl.getX() < (tank.getX() + tank.getImage().width) &&
 				bl.getY() > tank.getY() &&
 				bl.getY() < (tank.getY() + tank.getImage().height/2))
@@ -643,7 +643,17 @@ function checkKeys() {
 			thisPlayer.setAngle(5);
 		}
 		if((aKey == 40) || (aKey == 83))
+		{
 			newY += 1.5;
+			// Limit how far down ship can go
+			//can make 150 in a constant for game adjustments.
+			if (lastY - newY > 150)
+			{
+				newY -= 1.5;
+			}
+		}
+
+		
 		if(aKey == 32)//spacebar
 		{
 			shootRay = true;
