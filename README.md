@@ -9,6 +9,6 @@ Shoot the tanks.
 
 Controls
 ========
-WASD - move your ship around<br/>
+WASD/ARROW KEYS - move your ship around<br/>
 SPACE - Abduction ray<br/>
-MOUSE1 - Shoot<br/>
+MOUSE1/ENTER - Shoot<br/>

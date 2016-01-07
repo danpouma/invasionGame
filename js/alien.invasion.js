@@ -649,6 +649,11 @@ function checkKeys() {
 			shootRay = true;
 			//console.log("space");
 		}
+		// Hitting enter shall shoot as well as clicking.
+		if(aKey == 13)
+		{
+			thisPlayer.manageAmmo();
+		}
 			
 	}
 	
