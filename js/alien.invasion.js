@@ -16,21 +16,22 @@ var buildings = [];
 var trees = [];
 var clouds = [];
 var roadPaint = [];
+
+//Road image...
 var rImage;
 
-var images = [];
-
-var XVALUE = 570;
-var YVALUE = 265;
 var tick = 1;
 var playerScore = 0;
-var brImage_X;	
+
+var ammoCount = 0;
+
 
 var brOffset = 0;
 function init() {
 	//images, and objects
 	brImage = new Image();
 	brImage.src = "assets/background1v2.png";
+
 	rImage = new Image();
 	rImage.src = "assets/roadPaint.png";
 	thisPlayer = new Player("assets/ship.png");
@@ -44,9 +45,13 @@ function init() {
 	
 	//get canvas stuff
 	c = document.getElementById("myCanvas");
+
+	/*****************************************
+	Get context.. look into what this is doing
+	*****************************************/
 	ctx = c.getContext('2d');
 	
-	width = c.width;
+	width = c.width; 
 	height = c.height;
 	
 	gameLoop();//return setInterval(gameLoop, 10);
@@ -65,6 +70,9 @@ window.requestAnimFrame = (function(){
 
 
 function gameLoop(){
+
+	var loopCount = 1;
+
 	if(levelTick%4000 == 0){
 		increment_Level();
 		levelTick = 1;
@@ -81,7 +89,12 @@ function gameLoop(){
 		draw();
 		ctx.restore();
 		setScore(playerScore);
+
+		//Test this
+		setAmmo(ammoCount);
 	}, 16);
+
+	loopCount += 1;
 
 }
 
@@ -385,6 +398,12 @@ function setScore(display){
 	$("#score").text(display);
 }
 
+//change display to ammo_left as well as scores display too
+function setAmmo(display) {
+
+	$("#ammo").text(display);
+}
+
 
 
 /* Objects file merge...*/
@@ -409,7 +428,11 @@ function Player(imageSrc)
 	playerImage.src = imageSrc;
 	var x = 100;
 	var y = 100;
-	var MAX_AMMO_AMOUNT = 1000000;
+
+	/***************************************************
+	Perhaps make an ammo store u can pick up for reload? 
+	***************************************************/
+	var MAX_AMMO_AMOUNT = 1000000; 
 	var bulletTick = 0;
 	var ammo = [];
 	var rayWidth = 30;
@@ -498,6 +521,10 @@ function Player(imageSrc)
 			else
 			{
 				ammo.push(new bullet("assets/shipAmmo.png",x + playerImage.width/2,y + playerImage.height/2,1.5, 0));
+
+				// Ammo left is max - num of bullets
+				ammoCount = MAX_AMMO_AMOUNT - ammo.length;
+				
 			}
 		}
 		bulletTick++;
@@ -550,6 +577,7 @@ function Player(imageSrc)
 	{
 		x = 100;
 		y = 100;
+		ammoCount = 0;
 		ammo.length = 0;
 	}
 	

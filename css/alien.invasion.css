@@ -69,7 +69,7 @@ a.header.active {
 	position: absolute;
 	margin-left: 10px;
 	margin-top: 5px;
-	color: blue;
+	color: red;
 }
 
 #health{
@@ -109,6 +109,23 @@ a.header.active {
 	margin-top: 20px;
 	color: #0AF;
 	font-size: 36px;
+}
+
+/* Probably gotta rework this design! */
+.aTitle{
+	z-index: 3;
+	position: absolute;
+	margin-left: 10px;
+	margin-top: 50px;
+	color: black;
+}
+
+#ammo{
+	z-index: 3;
+	position: absolute;
+	margin-left: 10px;
+	margin-top: 70px;
+	color: black;
 }
 
 #textStuff{
