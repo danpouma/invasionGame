@@ -263,40 +263,52 @@ function drawExplosions()
 }
 //create list of buildings
 function createBuildings(){
-	
-	buildings.push(new objectToMove("assets/buildings/bakery.png", 595, 298, 1));
-	buildings.push(new objectToMove("assets/buildings/buffet.png", 595, 298, 1));
-	buildings.push(new objectToMove("assets/buildings/candyshop.png", 595, 298, 1));
-	buildings.push(new objectToMove("assets/buildings/cigarcenter.png", 595, 298, 1));
-	buildings.push(new objectToMove("assets/buildings/javahut.png", 595, 298, 1));
-	buildings.push(new objectToMove("assets/buildings/pizza.png", 595, 298, 1));
-	buildings.push(new objectToMove("assets/buildings/toxicmill.png", 595, 298, 1));
+	var bAssets = [ "bakery.png",
+					"buffet.png",
+					"candyshop.png",
+					"cigarcenter.png",
+					"javahut.png",
+					"pizza.png", 
+					"toxicmill.png"];
+
+	for (building = 0; building < bAssets.length; building++)
+	{
+		buildings.push(new objectToMove("assets/buildings/"+bAssets[building], 595, 298, 1));
+	}
 }
 
 //create trees array, this is not efficient
 function createTrees(){
-	trees.push(new objectToMove("assets/trees/tree01.png", 595, 296, .45));
-	trees.push(new objectToMove("assets/trees/tree02.png", 595, 296, .45));
-	trees.push(new objectToMove("assets/trees/tree01.png", 595, 296, .45));
-	trees.push(new objectToMove("assets/trees/tree02.png", 595, 296, .45));
-	trees.push(new objectToMove("assets/trees/tree01.png", 595, 296, .45));
-	trees.push(new objectToMove("assets/trees/tree02.png", 595, 296, .45));
-	trees.push(new objectToMove("assets/trees/tree01.png", 595, 296, .45));
-	trees.push(new objectToMove("assets/trees/tree02.png", 595, 296, .45));
-	trees.push(new objectToMove("assets/trees/tree01.png", 595, 296, .45));
-	trees.push(new objectToMove("assets/trees/tree02.png", 595, 296, .45));
+	var tAssets = [ "tree01.png",
+					"tree02.png"];
+
+	for (tree = 0; tree < 5; tree++)
+	{
+		for (tAsset = 0; tAsset < tAssets.length; tAsset++)
+		{
+			trees.push(new objectToMove("assets/trees/"+tAssets[tAsset], 595, 296, .45));
+		}
+
+	}
 }
 
 //create clouds, this is not efficient
+//clouds are placed on random y values between 80 and 220.
 function createClouds(){
-	clouds.push(new objectToMove("assets/clouds/cloud01.png", 595, 80, .35));
-	clouds.push(new objectToMove("assets/clouds/cloud02.png", 595, 110, .35));
-	clouds.push(new objectToMove("assets/clouds/cloud03.png", 595, 140, .35));
-	clouds.push(new objectToMove("assets/clouds/cloud01.png", 595, 100, .35));
-	clouds.push(new objectToMove("assets/clouds/cloud02.png", 595, 130, .35));
-	clouds.push(new objectToMove("assets/clouds/cloud03.png", 595, 160, .35));
-	clouds.push(new objectToMove("assets/clouds/cloud02.png", 595, 190, .35));
-	clouds.push(new objectToMove("assets/clouds/cloud03.png", 595, 220, .35));
+
+	var cAssets = [ "cloud01.png",
+					"cloud02.png",
+					"cloud03.png"];
+					
+	for (cloud = 0; cloud < 3; cloud++)
+	{
+		for (cAsset = 0; cAsset < cAssets.length; cAsset++)
+		{
+			var randY = Math.floor(Math.random() * (220 - 80)) + 80;
+			clouds.push(new objectToMove("assets/clouds/"+cAssets[cAsset], 595, randY, .35));
+		}
+	}
+	
 }
 
 function createRoadPaint(){
@@ -397,6 +409,8 @@ function setAmmo(display) {
 
 	$("#ammo").text(display);
 }
+
+
 
 
 
