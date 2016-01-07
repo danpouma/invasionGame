@@ -1,3 +1,0 @@
-[] - Look into ctx and canvas to figure it out thoroughly
-[] - Make thisPlayers bombs set off enemy bombs (perhaps only the death ones)
-[] - Make ammo limited and add ammo stores to regain supplies (something aliens would use to make bombs.. hmm

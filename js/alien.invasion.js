@@ -23,7 +23,7 @@ var rImage;
 var tick = 1;
 var playerScore = 0;
 
-var ammoCount = 0;
+var ammoCount = 20;
 
 
 var brOffset = 0;
@@ -440,7 +440,7 @@ function Player(imageSrc)
 	/***************************************************
 	Perhaps make an ammo store u can pick up for reload? 
 	***************************************************/
-	var MAX_AMMO_AMOUNT = 1000000; 
+	var MAX_AMMO_AMOUNT = 20; 
 	var bulletTick = 0;
 	var ammo = [];
 	var rayWidth = 30;
@@ -531,7 +531,7 @@ function Player(imageSrc)
 				ammo.push(new bullet("assets/shipAmmo.png",x + playerImage.width/2,y + playerImage.height/2,1.5, 0));
 
 				// Ammo left is max - num of bullets
-				ammoCount = MAX_AMMO_AMOUNT - ammo.length;
+				ammoCount -= 1;
 				
 			}
 		}
@@ -654,7 +654,6 @@ function checkKeys() {
 		{
 			thisPlayer.manageAmmo();
 		}
-			
 	}
 	
 	thisPlayer.incRay();
@@ -909,12 +908,14 @@ function objectToMove(imageSrc, startX, startY, spd)
 			y -= SPEED;
 			
 			angle += .5;
-			if(y <= thisPlayer.getY()-thisPlayer.getImage().height/2)
+			//fine tune this y-30 value to look best.
+			if(y-30 <= thisPlayer.getY()-thisPlayer.getImage().height/2)
 			{
 				vis = false;
 				x = startXValue;
 				y = startYValue;
 				playerScore += 100;
+				ammoCount += 20;
 			}
 		}
 		else
