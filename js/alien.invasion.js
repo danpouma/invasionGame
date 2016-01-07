@@ -70,9 +70,6 @@ window.requestAnimFrame = (function(){
 
 
 function gameLoop(){
-
-	var loopCount = 1;
-
 	if(levelTick%4000 == 0){
 		increment_Level();
 		levelTick = 1;
@@ -93,9 +90,6 @@ function gameLoop(){
 		//Test this
 		setAmmo(ammoCount);
 	}, 16);
-
-	loopCount += 1;
-
 }
 
 function draw() {
