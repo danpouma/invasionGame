@@ -513,7 +513,7 @@ function Player(imageSrc)
 	{
 		if(bulletTick % 10 == 0)
 		{
-			if(ammo.length > MAX_AMMO_AMOUNT)
+			if(ammoCount < 1)
 			{
 				for(a = 0; a < ammo.length; a++)
 				{
