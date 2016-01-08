@@ -605,47 +605,51 @@ function Player(imageSrc)
 var keys = [];
 function checkKeys() {
 	shootRay = false;
+
 	var lastX = thisPlayer.getX();
 	var lastY = thisPlayer.getY();
 	
 	var newX = 0;
 	var newY = 0;
+
+	// Restore back to flat angle after moving
 	thisPlayer.setAngle(1);
-	/*****************************************
-	Convert this code into a switch statement.
-	*****************************************/
+
 	for(i in keys)
 	{
 		var aKey = keys[i];
-		if((aKey == 37) || (aKey == 65)){
-			newX -= 1.5; //left
-			thisPlayer.setAngle(-5);
-		}
-		if((aKey == 38) || (aKey == 87))
-			newY -= 1.5;
-		if((aKey == 39) || (aKey == 68)){
-			newX += 1.5;
-			thisPlayer.setAngle(5);
-		}
-		if((aKey == 40) || (aKey == 83))
+		switch (aKey)
 		{
-			newY += 1.5;
-			// Limit how far down ship can go
-			//can make 150 in a constant for game adjustments.
-			if (lastY - newY > 175)
-			{
+			case 13:
+				thisPlayer.manageAmmo();
+				break;
+			case 32:
+				shootRay = true;
+				break;
+			case 37:
+			case 65:
+				newX -= 1.5;
+				thisPlayer.setAngle(-5);
+				break;
+			case 38:
+			case 87:
 				newY -= 1.5;
-			}
-		}
-		if(aKey == 32)//spacebar
-		{
-			shootRay = true;
-			//console.log("space");
-		}
-		// Hitting enter shall shoot as well as clicking.
-		if(aKey == 13)
-		{
-			thisPlayer.manageAmmo();
+				break;
+			case 39:
+			case 68:
+				newX += 1.5;
+				thisPlayer.setAngle(5);
+				break;
+			case 40:
+			case 83:
+				newY += 1.5;
+				if (lastY - newY > 175)
+				{
+					newY -= 1.5;
+				}
+				break;
+			default:
+				// Do nothing
 		}
 	}
 	
@@ -657,10 +661,12 @@ function checkKeys() {
 	thisPlayer.incY(newY);
 	//thisPlayer.Update(newX,newY);
 	
+	// Keep ship within the canvas
 	if (thisPlayer.getX() + thisPlayer.getImage().width > width || thisPlayer.getX() < 0)
 		thisPlayer.incX(-(newX));
 	if (thisPlayer.getY() + thisPlayer.getImage().height > height || thisPlayer.getY() < 0)
 		thisPlayer.incY(-(newY));
+
 	
 	//scrollWrapper(x,y);
 		
@@ -685,10 +691,12 @@ document.onmousedown = function(ev) {
 	mouseDown = true;
 }
 
+
 document.onmouseup = function(ev) {
 	mouseDown = false;
 	var i = keys.indexOf(ev.keyCode);
 }
+
 //////////////
 //***************
 //END PLAYER
