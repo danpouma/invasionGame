@@ -27,6 +27,7 @@ var ammoCount = 20;
 
 
 var brOffset = 0;
+
 function init() {
 	//images, and objects
 	brImage = new Image();
@@ -57,37 +58,28 @@ function init() {
 	gameLoop();//return setInterval(gameLoop, 10);
 }
 
-window.requestAnimFrame = (function(){
-	return window.requestAnimationFrame ||
-	window.webkitRequestAnimationFrame ||
-	window.mozRequestAnimationFrame ||
-	window.oRequestAnimationFrame ||
-	window.msRequestAnimationFrame;
-	//function(/* function */ callback, /* DOMElement */ element){
-	//	window.setTimeout(callback, 1000/60);
-	//};
-})();
-
 
 function gameLoop(){
-	if(levelTick%4000 == 0){
+
+	if (levelTick%4000 == 0)
+	{
 		increment_Level();
 		levelTick = 1;
-		console.log("LEVEL UP: " + gameLevel);
 	}
 	else
+	{
 		levelTick++;
-		
+	}
+	
+	// Run this function every 16 milli-seconds
 	setTimeout(function(){
-		requestAnimFrame(gameLoop, c); 
+		window.requestAnimationFrame(gameLoop, c);
 		clear();
 		update();
 		ctx.save()
 		draw();
 		ctx.restore();
 		setScore(playerScore);
-
-		//Test this
 		setAmmo(ammoCount);
 	}, 16);
 }
@@ -164,7 +156,6 @@ function updateBuildings(){
 		}
 		tick = 0;
 	}
-	
 	for(build = 0; build < buildings.length; build++)
 	{
 		var aBuilding = buildings[build];
@@ -185,10 +176,7 @@ function updateTrees(){
 			t.visible(true)
 		}
 		
-		//tick = 0;
 	}
-	//else{ tick++;}
-	
 	for(tree = 0; tree < trees.length; tree++)
 	{
 		var aTree = trees[tree];
@@ -208,11 +196,7 @@ function updateClouds(){
 		{
 			c.visible(true)
 		}
-		
-		//tick = 0;
 	}
-	//else{ tick++;}
-	
 	for(cloud = 0; cloud < clouds.length; cloud++)
 	{
 		var aCloud = clouds[cloud];
@@ -345,7 +329,9 @@ function grabBuildings()
 		{
 			b.pullBuilding(true);
 			if(b.getImage().src.indexOf("toxicmill.png") != -1 || b.getImage().src.indexOf("cigarcenter.png") != -1)
+			{
 				minusHealth(1);
+			}
 		}
 		else
 			b.pullBuilding(false);
@@ -540,7 +526,6 @@ function Player(imageSrc)
 	
 	this.hitCheck = function()
 	{
-		//console.log("checkhit");
 		for(bi = 0; bi<ammo.length; bi++)
 		{
 			var bl = ammo[bi]
@@ -552,9 +537,6 @@ function Player(imageSrc)
 					explosions.push(new explode(bl.getX(), bl.getY()));
 					bl.visible = false;
 					ammo.splice(bi,1);
-					//console.log("hit");
-					//playerScore+= 50;
-					//setScore(playerScore);
 					tank.decHealth();
 				}
 		}
@@ -629,6 +611,9 @@ function checkKeys() {
 	var newX = 0;
 	var newY = 0;
 	thisPlayer.setAngle(1);
+	/*****************************************
+	Convert this code into a switch statement.
+	*****************************************/
 	for(i in keys)
 	{
 		var aKey = keys[i];
@@ -647,13 +632,11 @@ function checkKeys() {
 			newY += 1.5;
 			// Limit how far down ship can go
 			//can make 150 in a constant for game adjustments.
-			if (lastY - newY > 150)
+			if (lastY - newY > 175)
 			{
 				newY -= 1.5;
 			}
 		}
-
-		
 		if(aKey == 32)//spacebar
 		{
 			shootRay = true;
