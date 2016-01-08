@@ -5,7 +5,7 @@ var levelTick = 1;
 var width = 560;
 var height = 346;
 
-var brImage;
+
 var thisPlayer;
 var tank;
 
@@ -30,8 +30,6 @@ var brOffset = 0;
 
 function init() {
 	//images, and objects
-	brImage = new Image();
-	brImage.src = "assets/background1v2.png";
 
 	rImage = new Image();
 	rImage.src = "assets/roadPaint.png";
@@ -112,6 +110,8 @@ function clear(){
 
 function drawBackground()
 {
+	var brImage = new Image();
+	brImage.src = "assets/background1v2.png";
 	ctx.drawImage(brImage,brOffset,0);   
 	ctx.drawImage(brImage,width+brOffset-1,0);
 	brOffset -= .2;
