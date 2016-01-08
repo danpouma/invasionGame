@@ -401,11 +401,7 @@ function setAmmo(display) {
 
 
 /* Objects file merge...*/
-//////////////
-//***************
-//ORIGINAL FILES
-//***************
-//////////////
+
 
 //////////////
 //***************
@@ -422,10 +418,6 @@ function Player(imageSrc)
 	playerImage.src = imageSrc;
 	var x = 100;
 	var y = 100;
-
-	/***************************************************
-	Perhaps make an ammo store u can pick up for reload? 
-	***************************************************/
 	var MAX_AMMO_AMOUNT = 20; 
 	var bulletTick = 0;
 	var ammo = [];
@@ -433,7 +425,7 @@ function Player(imageSrc)
 	var rayX = 0;
 	var rayY = 0;
 	var shipAngle = 0;
-	
+
 	this.update = function()
 	{
 		checkKeys();
