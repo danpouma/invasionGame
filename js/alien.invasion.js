@@ -938,8 +938,8 @@ function objectToMove(imageSrc, startX, startY, spd)
 		
 		ctx.save();
 
-		ctx.translate(x+bImage.width * 0.5, y+bImage.height * 0.5);
-		// Perform the rotation
+		ctx.translate(x+bImage.width * .55, y+bImage.height * .55);
+		// Rotate the building during ray
 		ctx.rotate((Math.PI / 180.0) * angle);
 		// Translate back to the top left of our image
 		ctx.translate(-bImage.width * 0.5, -bImage.height * 0.5);

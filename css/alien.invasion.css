@@ -59,11 +59,6 @@ a.header.active {
 	position: absolute;
 }
 
-#bCanvas {
-	z-index: 0;
-	position: absolute;
-}
-
 .hTitle{
 	z-index: 3;
 	position: absolute;
